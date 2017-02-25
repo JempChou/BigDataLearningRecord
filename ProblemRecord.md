@@ -36,4 +36,14 @@
  
 > 2.	检查/etc/selinux/config文件中第7行SELINUX是否等于disable，不修改后保存退出，使用systemctl restart sshd.service重启ssh服务即可！
 
+###5.Windows环境下Eclipse运行map reduce任务报错：(null) entry in command string: null chmod 0700
+####解决办法：
+>[下载地址](https://github.com/SweetInk/hadoop-common-2.7.1-bin)
+>中下载winutils.exe,libwinutils.lib 拷贝到%HADOOP_HOME%\bin目录 
+>
+>并将hadoop.dll，并拷贝到c:\windows\system32目录中，否则报Exception in thread "main" java.lang.UnsatisfiedLinkError 错误
+
+
+
+
 
