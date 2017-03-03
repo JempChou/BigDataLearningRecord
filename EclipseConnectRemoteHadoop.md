@@ -63,7 +63,7 @@
 	</property>
 >###这样关闭了整个hdfs文件的权限验证功能.
 
-###eclipse插件问题
+###eclipse插件问题[点我下载](https://pan.baidu.com/s/1cGgHVg)
 >###在添加集群之后点'>'出现错误
 >###
 	An internal error occurred during: "Map/Reduce location status updater".

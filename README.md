@@ -9,3 +9,5 @@
 ###[Hadoop环境搭建](#)
 
 ###[Hadoop爬坑记录](https://github.com/FunnyWuLoveLife/HadoopLearningRecord/blob/master/ProblemRecord.md)
+
+###[Eclipse插件安装](https://github.com/FunnyWuLoveLife/BigDataLearningRecord/blob/master/EclipseConnectRemoteHadoop.md)
