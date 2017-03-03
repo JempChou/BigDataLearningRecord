@@ -13,6 +13,36 @@
 
 ###设置本地hadoop路径（不用配置etc/hadoop里面的配置文件也可）
 
+###显示Map/Reduce窗口 【Window】->【Show View】->【Other】找到MapReduce　Tools,然后选择Map/Reduce Locations.如下图
+![](http://i.imgur.com/hU4ehmU.png)
+###完成以上操作后你就能在任务视图窗口看见Map/Reduce Locations，如下图
+![](http://i.imgur.com/6yR6niW.png)
+###右键选择【New Hadoop location】新建连接,
+![](http://i.imgur.com/Ef3b7B6.png)
+###其中Host为远程或本地hadoop的namenode节点的地址，prot为你在core-site.xml中设置的prot,然后点击Advance parameters配置如下参数
+<table>
+    <tr>
+        <td>参数名</td>
+ 		<td>值</td>
+    </tr>
+    <tr>
+        <td>Hadoop.tmp.dir</td>
+ 		<td>core-site.xml里hadoop.tmp.dir设置一致</td>
+    </tr>
+    <tr>
+        <td>Dfs.replication</td>
+ 		<td>hdfs-site.xml里面的dfs.replication一致</td>
+    </tr>
+    <tr>
+        <td>Dfs.permissions.enabled</td>
+ 		<td>false</td>
+    </tr>
+</table>
+###最后一步。。。
+
+###点击【Window】->【Perspective】->【Open Perspective】->【Other】,找到Map/Reduce，并选择点击OK，完工，你的Project Explorer视图中出现了DFS Locations。
+----
+##问题汇总
 ###Hdfs权限问题导致的各种情况
 >###1.eclipse创建目录和提交文件失败(有可能没有任何提示)
 >###2.org.apache.hadoop.security.AccessControlException: Permission denied:user=xxxx, access=EXECUTE报错
