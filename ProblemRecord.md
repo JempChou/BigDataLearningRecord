@@ -44,6 +44,28 @@
 >并将hadoop.dll，并拷贝到c:\windows\system32目录中，否则报Exception in thread "main" java.lang.UnsatisfiedLinkError 错误
 
 
+### 6.ssh免密码登录设置无效问题。
+在centos7下设置ssh免密码登录时却发现还是需要输入密码，上网查了一下，原来是因为文件的权限问题。具体看以下链接：http://www.linuxidc.com/Linux/2014-10/107762.htm
+用root用户登陆查看系统的日志文件：$tail /var/log/secure -n 20
+
+~~~
+…………
+>Oct  7 10:26:43 MasterServer sshd[2734]: Authentication refused: bad ownership or modes for file /home/Hadooper/.ssh/authorized_keys
+Oct  7 10:26:48 MasterServer sshd[2734]: Accepted password for hadooper from ::1 port 37456 ssh2
+Oct  7 10:26:48 MasterServer sshd[2734]: pam_unix(sshd:session): session opened for user hadooper by (uid=0)
+Oct  7 10:36:30 MasterServer sshd[2809]: Accepted password for hadooper from 192.168.1.241 port 36257 ssh2
+Oct  7 10:36:30 MasterServer sshd[2809]: pam_unix(sshd:session): session opened for user hadooper by (uid=0)
+Oct  7 10:38:28 MasterServer sshd[2857]: Authentication refused: bad ownership or modes for directory /home/hadooper/.ssh
+…………
+~~~
+提示/home/hadooper/.ssh和 /home/hadooper/.ssh/authorized_keys权限不对，修改如下：   
+#### 解决方法：
+配置完成以后再加上以下两条命令
+```
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys 
+```
 
 
-
+### 7./etc/hostname(主机名)和/etc/hosts（ip解析）配置不正确
+如果出现连接不上的错误，有可能是/etc/hosts和/etc/hostname中配置出错，当时我的datanode1子机上的hostname本来想写成slave1的，但是由于粗心写成了slavel1，启动的时候一切正常，在运行wordcount程序的时候却出现了连接异常的情况，导致无法运行出结果。
